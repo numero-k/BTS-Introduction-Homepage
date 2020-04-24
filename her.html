@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LOVE YOURSELF 'HER'</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        @import url(font.css);
+        li:hover {
+            cursor: pointer;
+        }
+        body {
+            background-color: #141923;
+            text-align: center;
+        }
+        li {
+            color : white;
+            width: 280px;
+            border: 3px solid white;
+            font-family: NanumBarunpenR;
+            padding: 5px;
+            margin: 5px;
+            text-align: left;
+            list-style: none;
+        }
+        #first {
+            color: #A9F5BC;
+            border-color: #A9F5BC;
+        }
+        button {
+            font-family: TmonTium,TmonMonsori;
+            background-color: #141923;
+            color : white;
+            font-size: 22px;
+        }
+        button:hover {
+            color: #A9F5BC;
+            border-color: #A9F5BC;
+        }
+        img {
+            border: 5px solid white;
+            width: 270px;
+            text-align: left;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body onload="init()">
+<table>
+    <tr>
+        <td>
+            <ul>
+                <li class="playlist" id="first" onclick="chagneMusic('0')">1. Intro : Serendipity</li>
+                <li class="playlist" onclick="chagneMusic('1')"> 2. DNA</li>
+                <li class="playlist" onclick="chagneMusic('2')"> 3. Best Of Me</li>
+                <li class="playlist" onclick="chagneMusic('3')"> 4. 보조개</li>
+                <li class="playlist" onclick="chagneMusic('4')"> 5. Pied Piper</li>
+                <li class="playlist" onclick="chagneMusic('5')"> 6. MIC Drop (feat. Desiigner) [Steve Aoki Remix]</li>
+                <li class="playlist" onclick="chagneMusic('6')"> 7. MIC Drop</li>
+                <li class="playlist" onclick="chagneMusic('7')"> 8. 고민보다 Go</li>
+                <li class="playlist" onclick="chagneMusic('8')"> 9. Outro : Her</li>
+            </ul>
+        </td>
+        <td>
+            <img src="media/img/album/disco-10-img.png"><br><br>
+            <audio style=" width: 300px;" id="audio" src="media/bgm/her/1방탄소년단 (BTS)-Intro - Serendipity.mp3" controls autoplay></audio><br><br>
+            <button  id="play" onclick="control(event)">play</button>
+            <button id="pause" onclick="control(event)">pause</button>
+            <button id="replay" onclick="control(event)">replay</button>
+            <button id="next" onclick="control(event)">next</button>
+        </td>
+    </tr>
+</table>
+<script>
+        var files=["media/bgm/her/1방탄소년단 (BTS)-Intro - Serendipity.mp3",
+        "media/bgm/her/2방탄소년단 (BTS)-DNA.mp3",
+        "media/bgm/her/3방탄소년단 (BTS)-Best Of Me.mp3",
+        "media/bgm/her/4방탄소년단 (BTS)-보조개.mp3",
+        "media/bgm/her/5방탄소년단 (BTS)-Pied Piper.mp3",
+        "media/bgm/her/6방탄소년단 - MIC Drop (feat. Desiigner) [Steve Aoki Remix].mp3",
+        "media/bgm/her/7방탄소년단 (BTS)-MIC Drop.mp3",
+        "media/bgm/her/8방탄소년단 (BTS)-고민보다 Go.mp3",
+        "media/bgm/her/9방탄소년단 (BTS)-Outro - Her.mp3"];
+        var audio=document.getElementById("audio");
+        var next=1;
+        var n;
+        audio.onended=function() {
+            
+            if(next==files.length) {
+                next=0;
+            }
+            audio.src = files[next];
+            reset();
+            list[next].style.color = "#A9F5BC";
+            list[next].style.borderColor = "#A9F5BC";
+            next++;
+            next %= files.length;
+            audio.play();
+        }
+        function control(e) {
+            var id=e.target.id;
+            if(id=="play") {
+                audio.play();
+            }
+            else if(id=="pause") {
+                audio.pause();
+            }
+            else if(id=="replay") {
+                audio.load();
+                audio.play();
+            }
+            else if(id=="next") {
+                list[next].removeEventListener("mouseover", over);
+                list[next].removeEventListener("mouseout", out);
+                if(next==files.length) {
+                    next %= files.length;
+                }
+                audio.src=files[next];
+                reset();
+                list[next].style.color = "#A9F5BC";
+                list[next].style.borderColor = "#A9F5BC";
+                next++;
+                next %= files.length;
+                audio.play();
+            }
+        }
+        var list=new Array();
+        function init() {
+            list=document.getElementsByClassName("playlist");
+            for(var i=1 ; i<list.length ; ++i) {
+                list[i].addEventListener("mouseover", over);
+                list[i].addEventListener("mouseout", out);
+            }
+        }
+        function over() {
+            for (var i=0; i < list.length; ++i) {
+                this.style.backgroundColor= "#aaafb9";
+                this.style.borderColor = "white";
+            }
+        }
+        function out() {
+            for (var i = 0; i < list.length; ++i) {
+                this.style.color = "white";
+                this.style.borderColor = "white";
+                this.style.backgroundColor = "#141923";
+            }
+        }
+        function chagneMusic(num) {
+            n=num*1;
+            next = n+1;
+            reset();
+            for (var i = 0; i < list.length; ++i) {
+                list[i].addEventListener("mouseover", over);
+                list[i].addEventListener("mouseout", out);
+            }
+            list[n].removeEventListener("mouseover", over);
+            list[n].removeEventListener("mouseout", out);
+            audio.src=files[n];
+            audio.play();
+            list[n].style.color = "#A9F5BC";
+            list[n].style.borderColor = "#A9F5BC";
+            if (next == files.length) {
+                next = 0;
+            }
+        }
+        function reset() {
+            for(var i=0; i<list.length ; ++i) {
+                list[i].style.color="white";
+                list[i].style.borderColor = "white";
+                list[i].style.backgroundColor = "#141923";
+            }
+        }
+    </script>
+</body>
+</html>

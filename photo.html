@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BTS Billboard 1st!!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <script>
+        function init() {
+            b=document.getElementsByClassName("slide");
+            for(var i=0 ; i<b.length ; ++i) {
+                b[i].addEventListener("mouseover", over);
+                b[i].addEventListener("mouseout", out);
+            }
+        }
+        function over() {
+            for (var i=0; i <b.length; ++i) {
+                this.style.color = "white";
+                this.style.borderColor = "white";
+            }
+        }
+        function out() {
+            for (var i = 0; i < b.length; ++i) {
+                this.style.color = "#aaafb9";
+                this.style.borderColor = "#aaafb9";
+            }
+        }
+        var files=new Array();
+        for(var i=0 ; i<40 ; ++i) {
+            files[i]="media/img/photo/"+i+".jpg";
+        }
+        var imgs=new Array();
+        for(var i=0; i<files.length ; ++i) {
+            imgs[i]=new Image();
+            imgs[i].src=files[i];
+        }
+        var next = 0;
+        function changeLeft() {
+            next--;
+            if(next==(-1)) {
+                next=38;
+            }
+            document.getElementById("img").src = imgs[next].src;
+        }
+        function changeRight() {
+            document.getElementById("img").src =imgs[next].src;
+            next++;
+            next %= imgs.length;
+        }
+
+    </script>
+    <style>
+        @import url(font.css);
+        body {
+            background-color: #141923;
+            text-align: center;
+            
+        }
+        #menubar ul {
+            margin: 0;
+            padding: 0;
+        }
+        #menubar ul li {
+            display: inline;
+            list-style-type: none;
+            padding: 0px 15px;
+            margin-right: 30px;
+        }
+        #menubar ul li a {
+            text-decoration: none;
+        }
+        .div {
+            position: fixed;
+        }
+        a {
+            color: #aaafb9;
+            font-size: 18px;
+        }
+        a:visited {
+            color : #aaafb9;
+        }
+        a:hover {
+            color: white;
+        }
+        p {
+            font-family: NanumBarunpenR;
+            color: #aaafb9;
+        }
+        .slide {
+            border: 5px solid #aaafb9;
+            border-radius: 10px;
+            color: #aaafb9;
+            font-size : 30px;
+            display: inline-block;
+            position: absolute;
+        }
+        .slide:hover {
+            border: 5px solid white;
+            color: white;
+            cursor: pointer;
+        }
+        #img {
+            border: 10px solid rgba(240, 244, 250, 0.2);
+            margin: 1em;
+            text-align: center;
+            width: 820px;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body onload="init()">
+<h3>
+        <a href="btsmain2.html" target="_self" title="클릭시 메인 이동"><img src="media/img/logo/logo1.png"></a>
+</h3>
+<nav id="menubar">
+    <ul>
+        <li><a href="discography.html" target="_self">DISCOGRAPHY</a></li>
+        <li><a style="color :white;" href="photo.html" target="_self">PHOTO</a></li>
+        <li><a href="video.html" target="_self">VIDEO</a></li>
+        <li><a href="http://company.ibighit.com/schedule/?page_id=37" target="_blank">SCHEDULE</a></li>
+    </ul>
+</nav><br>
+<nav id="menubar">
+    <ul style="margin-bottom: 30px">
+        <li class="slide" style="left: 350px; top:500px;" onclick="changeLeft()">&lt;</li>
+        <li class="slide" style="right: 320px; top:500px;" onclick="changeRight()">&gt;</li>
+    </ul>
+</nav>
+<img id="img" src="media/img/all/all01.jpg"><br><br><br>
+<div class="div" style="top: 100px; left: 50px;"><a href="bts.html" target="_self" title="클릭시 소식 이동"><img src="media/img/logo/logo_loveyourself.png" ></a></div>
+<div class="div" style="top: 500px; left: 192px;"><img src="media/img/logo/logo_juhn.png" ></div>
+<div class="div" style="top :50px; right: 0px; z-index: -3"><img src="media/img/logo/bg_t.png"></div>
+<nav id="menubar">
+    <ul>
+        <li><a href="http://btsblog.ibighit.com/" target="_blank">BLOG</a></li>
+        <li><a href="http://cafe.daum.net/BANGTAN" target="_blank">CAFE</a></li>
+        <li><a href="https://www.facebook.com/bangtan.official" target="_blank">FACEBOOK</a></li>
+        <li><a href="https://www.youtube.com/user/BANGTANTV" target="_blank">YOUTUBE</a></li>
+    </ul>
+</nav>
+<h3>
+    <img src="media/img/logo/logo_bts.png">
+</h3>
+<p>
+    Copyright © 2018 NumeroK All Rights Reserved
+</p>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BTS Billboard 1st!!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        @import url(font.css);
+        body {
+            background-color: #141923;
+            text-align: center;
+
+        }
+
+        #menubar ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        #menubar ul li {
+            display: inline;
+            list-style-type: none;
+            padding: 0px 15px;
+            margin-right: 30px;
+        }
+        #menubar ul li a {
+            text-decoration: none;
+        }
+        iframe {
+            border: 10px solid rgba(240, 244, 250, 0.2);
+            margin: 1em;
+        }
+        .logoDiv {
+            position: fixed;
+        }
+        .movieButton li {
+            border: 1px solid #aaafb9;
+            width: 100px;
+            font-family: NanumBarunpenR;
+            color: #aaafb9;
+            display: inline-block;
+            list-style-type: none;
+            padding: 0px 15px;
+            margin-right: 30px;
+        }
+        .movieButton li:hover {
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+        }
+        a {
+            color: #aaafb9;
+            font-size: 18px;
+        }
+        a:visited {
+            color: #aaafb9;
+        }
+        a:hover {
+            color: white;
+        }
+        p {
+            font-family: NanumBarunpenR;
+            color: #aaafb9;
+        }
+    </style>
+    <script>
+        var b=new Array();
+        var files=["https://www.youtube.com/embed/7C2z4GqqS5E",
+        "http://www.youtube.com/embed/MBdVXkSdhwU",
+        "http://www.youtube.com/embed/4ujQOR2DMFM",
+        "http://www.youtube.com/embed/hmE9f-TEutc",
+        "http://www.youtube.com/embed/xEeFrLSkMm8",
+        "http://www.youtube.com/embed/DOuhvBJqKVY",
+        "http://www.youtube.com/embed/H8lYMWZD5P8",
+        "http://www.youtube.com/embed/GZjt_sA2eso",
+        "http://www.youtube.com/embed/9DwzBICPhdM",
+        "http://www.youtube.com/embed/LHHjp3IMjMk",
+        "http://www.youtube.com/embed/Hhph0_CdUHg",
+        "http://www.youtube.com/embed/wKysONrSmew"];
+        function init() {
+            b=document.getElementsByClassName("videoButton");
+            for(var i=1 ; i<b.length ; ++i) {
+                b[i].addEventListener("mouseover", over);
+                b[i].addEventListener("mouseout", out);
+            }
+        }
+        function over() {
+            for (var i=0; i <b.length; ++i) {
+                this.style.color = "white";
+                this.style.borderColor = "white";
+            }
+        }
+        function out() {
+            for (var i = 0; i < b.length; ++i) {
+                this.style.color = "#aaafb9";
+                this.style.borderColor = "#aaafb9";
+            }
+        }
+        function changeVideo(num) {
+            n=num*1;
+            reset();
+            for (var i = 0; i < b.length; ++i) {
+                b[i].addEventListener("mouseover", over);
+                b[i].addEventListener("mouseout", out);
+            }
+            b[n].removeEventListener("mouseover",over);
+            b[n].removeEventListener("mouseout", out);
+            b[n].style.color = "white";
+            b[n].style.borderColor = "white";
+            document.getElementById("video").src=files[n];
+        }
+        function reset() {
+            for(var i = 0; i < b.length; ++i) {
+                b[i].style.color = "#aaafb9";
+                b[i].style.borderColor = "#aaafb9";
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+    <h3>
+        <a href="btsmain2.html" target="_self" title="클릭시 메인 이동">
+            <img src="media/img/logo/logo1.png">
+        </a>
+    </h3>
+    <nav id="menubar">
+        <ul>
+            <li>
+                <a href="discography.html" target="_self">DISCOGRAPHY</a>
+            </li>
+            <li>
+                <a href="photo.html" target="_self">PHOTO</a>
+            </li>
+            <li>
+                <a style="color :white" href="video.html" target="_self">VIDEO</a>
+            </li>
+            <li>
+                <a href="http://company.ibighit.com/schedule/?page_id=37" target="_blank">SCHEDULE</a>
+            </li>
+            
+        </ul>
+    </nav>
+    <br>
+    <div class="logoDiv" style="top: 100px; left: 50px;"><a href="bts.html" target="_self" title="클릭시 소식 이동">
+        <img src="media/img/logo/logo_loveyourself.png"></a>
+    </div>
+    <div class="logoDiv" style="top: 500px; left: 192px;">
+        <img src="media/img/logo/logo_juhn.png">
+    </div>
+    <div class="logoDiv" style="top :50px; right: 0px; z-index: -3">
+        <img src="media/img/logo/bg_t.png">
+    </div>
+    <ul class="movieButton">
+        <li class="videoButton" onclick="changeVideo('0')" style="color: white; border-color: white;">
+            'FAKE LOVE' MV
+        </li>
+        <li class="videoButton" onclick="changeVideo('1')">
+            'DNA' MV
+        </li>
+        <li class="videoButton" onclick="changeVideo('2')">
+            '불타오르네' MV
+        </li>
+        <li class="videoButton" onclick="changeVideo('3')">
+            '피땀눈물' MV
+        </li>
+    </ul>
+    <ul class="movieButton">
+        <li class="videoButton" onclick="changeVideo('4')">
+            '봄날' MV
+        </li>
+        <li class="videoButton" onclick="changeVideo('5')">
+            'I NEED U' MV
+        </li>
+        <li class="videoButton" onclick="changeVideo('6')">
+            '쩔어' MV
+        </li>
+        <li class="videoButton" onclick="changeVideo('7')">
+            'SAVE ME' MV
+        </li>
+    </ul>
+    <ul class="movieButton">
+        <li class="videoButton" onclick="changeVideo('8')">
+            'NOT TODAY' MV
+        </li>
+        <li class="videoButton" onclick="changeVideo('9')">
+            '상남자' MV
+        </li>
+        <li class="videoButton" onclick="changeVideo('10')">
+            '호르몬 전쟁' MV
+        </li>
+        <li class="videoButton" onclick="changeVideo('11')">
+            'RUN' MV
+        </li>
+    </ul>
+    <iframe id="video" width="820" height="462" src='https://www.youtube.com/embed/7C2z4GqqS5E'></iframe>
+    <nav id="menubar">
+        <ul>
+            <li>
+                <a href="http://btsblog.ibighit.com/" target="_blank">BLOG</a>
+            </li>
+            <li>
+                <a href="http://cafe.daum.net/BANGTAN" target="_blank">CAFE</a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/bangtan.official" target="_blank">FACEBOOK</a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/user/BANGTANTV" target="_blank">YOUTUBE</a>
+            </li>
+        </ul>
+    </nav>
+    <h3>
+        <img src="media/img/logo/logo_bts.png">
+    </h3>
+    <p>
+        Copyright © 2018 NumeroK All Rights Reserved
+    </p>
+</body>
+
+</html>

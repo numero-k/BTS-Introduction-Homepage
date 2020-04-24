@@ -1,0 +1,20 @@
+    @font-face {
+            font-family: TmonTium;
+            src:url(media/font/TmonTium.ttf);
+        }
+    @font-face {
+            font-family: TmonMonsori;
+            src:url(media/font/TmonMonsori.ttf);
+        }
+    @font-face {
+            font-family: NanumBarunpenR;
+            src:url(media/font/NanumBarunpenR.ttf);
+        }
+    @font-face {
+            font-family: NanumBarunpenB;
+            src:url(media/font/NanumBarunpenB.ttf);
+            }
+    body {
+            font-family: TmonTium,TmonMonsori;
+        }
+        

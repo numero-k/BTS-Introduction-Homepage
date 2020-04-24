@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BTS Billboard 1st!!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        @import url(font.css);
+        body {
+            background-image: url("media/img/all/all00.png");
+            background-size: 100% ; 
+            text-align: center;
+        }
+        #audio {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 400px;
+            padding: 5px;
+        }
+        a {
+            text-decoration: none;
+            font-size:30px;
+        }
+    </style>
+    <script>
+        var files =["media/img/all/all00.png",
+        "media/img/all/all01.jpg",
+        "media/img/all/all02.jpg",
+        "media/img/all/all03.jpg",
+        "media/img/all/all04.jpg",
+        "media/img/all/all05.jpg",
+        "media/img/all/all06.jpg",
+        "media/img/all/all07.jpg",
+        "media/img/all/all08.jpg",
+        "media/img/all/all09.jpg"];
+        var imgs=new Array();
+        for(var i=0; i<files.length ; ++i) {
+            imgs[i]=new Image();
+            imgs[i].src=files[i];
+        }
+        function loadImage(interval) {
+            setInterval("changeImage()",interval);
+        }
+        var next=1;
+        function changeImage() {
+            document.getElementById("background").style.backgroundImage="url("+imgs[next].src+")";
+            next++;
+            next %= imgs.length;
+        }
+    </script>
+</head>
+<body id="background" onload="loadImage(2000)">
+<header>
+<h3><a href="bts.html" target="_blank" title="클릭 시 사이트 이동"><img src="media/img/logo/logo1.png"></a></h3>
+<table style="margin-left: auto; margin-right: auto;">
+    <tbody>
+        <tr>
+            <td style="width: 14.28%; text-align: center;">
+                <p>
+                    <a title="클릭시 진 프로필 이동" href="jin.html" target="_blank">
+                        <span style="color: #9CC6EA">Jin</span></a></p></td>
+            <td style="width: 14.28%; text-align: center;">
+                <p>
+                    <a title="클릭시 슈가 프로필 이동" href="suga.html" target="_blank">
+                        <span style="color: #B0BEE1">SUGA</span></a></p></td>
+            <td style="width: 14.28%; text-align: center;">
+                <p>
+                    <a title="클릭시 제이홉 프로필 이동" href="jhope.html" target="_blank">
+                        <span style="color: #BDB8DB">J-HOPE</span></a></p></td>
+            <td style="width: 14.28%; text-align: center;">
+                <p>
+                    <a title="클릭시 RM 프로필 이동" href="rm.html" target="_blank">
+                        <span style="color: #C9B3D6">RM</span></a></p></td>
+            <td style="width: 14.28%; text-align: center;">
+                <p>
+                    <a title="클릭시 지민 프로필 이동" href="jimin.html" target="_blank">
+                        <span style="color: #CEB0D3">Jimin</span></a></p></td>
+            <td style="width: 14.28%; text-align: center;">
+                <p>
+                    <a title="클릭시 뷔 프로필 이동" href="v.html" target="_blank">
+                        <span style="color: #E2AAC8">V</span></a></p></td>
+            <td style="width: 14.28%; text-align: center;">
+                <p>
+                    <a title="클릭시 정국 프로필 이동" href="jungkook.html" target="_blank">
+                        <span style="color: #F8CEB5">Jungkook</span></a></p></td>
+        </tr>
+    </tbody>
+</table>
+</header>
+<p id="audio" style="z-index: 3; font-family: NanumBarunpenR; bottom: 26px; right: 65px;">BTS-FAKE LOVE (BTS Billboard 1st!!)</p>
+<audio id="audio" src="media/bgm/BTS-FAKE LOVE.mp3" controls autoplay loop preload="auto">브라우저가 오디오 기능을 지원하지 않습니다.</audio>
+</body>
+</html>
